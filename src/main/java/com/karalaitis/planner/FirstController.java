@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class FirstController {
 
-    @GetMapping("/hello/{name}")
-    public String sayHello(@PathVariable String name, @RequestParam String surname){
-        System.out.println("Hello, my name is " + name + " " + surname);
+    @GetMapping("/hello")
+    public String sayHello(@RequestParam String surname){
         return "hello";
     }
 }
