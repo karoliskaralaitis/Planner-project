@@ -1,4 +1,4 @@
-package com.karalaitis.planner;
+package com.karalaitis.planner.goals;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
