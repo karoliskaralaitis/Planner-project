@@ -1,9 +1,6 @@
 package com.karalaitis.planner.goals;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -12,8 +9,8 @@ import lombok.ToString;
 public class Goal {
     private String name;
     private String doByDate;
-    private int numberOfTasks;
-    private int numberOfSteps;
+//    private int numberOfTasks;
+//    private int numberOfSteps;
     private String comment;
-    private String dateOfCreation;
+//    private String dateOfCreation;
 }
