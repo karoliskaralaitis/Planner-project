@@ -25,4 +25,8 @@ public class GoalDao {
     public Goal getGoalByUUID(UUID id){
         return goals.get(id);
     }
+
+    public void deleteGoalByUUID(UUID id) {
+        goals.remove(id);
+    }
 }

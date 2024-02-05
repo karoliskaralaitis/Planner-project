@@ -20,6 +20,7 @@
                 <td><a th:href="@{/goals/{goalId}/update(goalId=${goal.goalId})}" th:text="${goal.Name}"></a></td>
                 <td th:text="${goal.DoByDate}"></td>
                 <td th:text="${goal.Comment}"></td>
+                <td><a th:href="@{/goals/{goalId}/delete(goalId=${goal.goalId})}">Delete</a></td>
             </tr>
         </tbody>
     </table>

@@ -31,4 +31,8 @@ public class GoalService {
     public Goal getGoalByUUID(UUID id){
         return goalDao.getGoalByUUID(id);
     }
+
+    public void deleteGoaltByUUID(UUID id) {
+        goalDao.deleteGoalByUUID(id);
+    }
 }

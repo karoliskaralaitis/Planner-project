@@ -33,11 +33,9 @@ public class GoalController {
     }
 
     @PostMapping("/goals/create")
-    public String createAGoal(Goal goal) {
+    public String createAGoal(Model model, Goal goal) {
         goalService.saveGoal(goal);
-        System.out.println("In database:");
-        goalService.getAllGoals().forEach(System.out::println);
-        return "index/index";
+        return getGoals(model);
     }
 
     @PostMapping("/goals/{goalId}/update")
@@ -51,5 +49,11 @@ public class GoalController {
         List<Goal> allGoals = goalService.getAllGoals();
         model.addAttribute("goalList", allGoals);
         return "goals/goalsList";
+    }
+
+    @GetMapping("/goals/{goalId}/delete")
+    public String deleteGoal(Model model, @PathVariable UUID goalId) {
+        goalService.deleteGoaltByUUID(goalId);
+        return getGoals(model);
     }
 }
