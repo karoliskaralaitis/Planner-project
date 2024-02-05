@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class GoalsDao {
+public class GoalDao {
     private List<Goal> goals = new ArrayList<>();
 
     public void save (Goal goal){

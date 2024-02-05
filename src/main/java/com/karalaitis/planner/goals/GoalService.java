@@ -6,20 +6,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GoalsService {
+public class GoalService {
 
-    private GoalsDao goalsDao;
+    private GoalDao goalDao;
 
     @Autowired
-    public GoalsService(GoalsDao goalsDao){
-        this.goalsDao = goalsDao;
+    public GoalService(GoalDao goalDao){
+        this.goalDao = goalDao;
     }
 
     public void saveGoal(Goal goal) {
-        goalsDao.save(goal);
+        goalDao.save(goal);
     }
 
     public List<Goal> getAllGoals() {
-       return goalsDao.getAll();
+       return goalDao.getAll();
     }
 }
