@@ -20,7 +20,7 @@ public class GoalController {
 
     @GetMapping("/goals/create")
     public String showGoalCreationPage(Model model){
-        model.addAttribute("goal", new Goal());
+        model.addAttribute("goal", Goal.builder().build());
         return "goals/goals";
     }
 

@@ -19,7 +19,10 @@ public class GoalDataMockConfig {
         final Faker faker = new Faker();
         var count = 0;
         while (MAX_COUNT >= count) {
-            goalService.saveGoal(new Goal(faker.lorem().sentence(), faker.lorem().word(), faker.lorem().sentence()));
+            goalService.saveGoal(Goal.builder().name(faker.lorem().sentence())
+                    .doByDate(faker.lorem().word())
+                    .comment(faker.lorem().sentence())
+                    .build());
             count++;
         }
         return null;

@@ -2,6 +2,7 @@ package com.karalaitis.planner.goals;
 
 import lombok.*;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
