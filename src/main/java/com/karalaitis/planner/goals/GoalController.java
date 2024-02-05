@@ -28,6 +28,6 @@ public class GoalController {
         goalService.saveGoal(goal);
         System.out.println("In database:");
         goalService.getAllGoals().forEach(System.out::println);
-        return "hello";
+        return "index/index";
     }
 }
