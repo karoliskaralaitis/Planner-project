@@ -5,21 +5,24 @@
     <title>Planner</title>
 </head>
 <body>
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Do by date</th>
-            <th>Comment</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="goal: ${goalList}">
-            <td th:text="${goal.Name}"></td>
-            <td th:text="${goal.DoByDate}"></td>
-            <td th:text="${goal.Comment}"></td>
-        </tr>
-    </tbody>
-</table>
+<div th:if="${goalList.isEmpty}">Goal list is empty!</div>
+<div th:unless="${goalList.isEmpty}">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Do by date</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="goal: ${goalList}">
+                <td th:text="${goal.Name}"></td>
+                <td th:text="${goal.DoByDate}"></td>
+                <td th:text="${goal.Comment}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
