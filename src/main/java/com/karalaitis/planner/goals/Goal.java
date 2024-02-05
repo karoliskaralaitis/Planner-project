@@ -10,7 +10,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @ToString
 public class Goal {
-    private UUID uuid;
+    private UUID goalId;
     private String name;
     private String doByDate;
 //    private int numberOfTasks;

@@ -7,7 +7,7 @@
 <body>
 <th:text></th:text>
 <h1>Goal List</h1>
-<form method="post" th:action="@{/goals/create}" th:object="${goal}">
+<form method="post" th:object="${goal}">
 
     <label>Name</label>
     <input type="text" placeholder="Name" th:field="*{name}"><br/>

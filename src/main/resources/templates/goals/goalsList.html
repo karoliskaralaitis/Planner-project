@@ -17,7 +17,7 @@
         </thead>
         <tbody>
             <tr th:each="goal: ${goalList}">
-                <td th:text="${goal.Name}"></td>
+                <td><a th:href="@{/goals/{goalId}/update(goalId=${goal.goalId})}" th:text="${goal.Name}"></a></td>
                 <td th:text="${goal.DoByDate}"></td>
                 <td th:text="${goal.Comment}"></td>
             </tr>

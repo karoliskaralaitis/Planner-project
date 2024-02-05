@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class GoalService {
@@ -19,7 +20,15 @@ public class GoalService {
         goalDao.save(goal);
     }
 
+    public void updateGoal(Goal goal) {
+        goalDao.update(goal);
+    }
+
     public List<Goal> getAllGoals() {
        return goalDao.getAll();
+    }
+
+    public Goal getGoalByUUID(UUID id){
+        return goalDao.getGoalByUUID(id);
     }
 }
