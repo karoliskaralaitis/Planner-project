@@ -1,12 +1,13 @@
 package com.karalaitis.planner.goals;
 
-import com.karalaitis.planner.goals.Goal;
-import com.karalaitis.planner.goals.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
+
+import java.util.List;
+
 @Controller
 public class GoalController {
 
@@ -18,9 +19,9 @@ public class GoalController {
     }
 
     @GetMapping("/goals/create")
-    public String sayHello(Model model){
+    public String showGoalCreationPage(Model model){
         model.addAttribute("goal", new Goal());
-        return "goals";
+        return "goals/goals";
     }
 
     @PostMapping("/goals/create")
@@ -30,4 +31,12 @@ public class GoalController {
         goalService.getAllGoals().forEach(System.out::println);
         return "index/index";
     }
+
+    @GetMapping("/goals")
+    public String getGoals(Model model){
+        List<Goal> allGoals = goalService.getAllGoals();
+        model.addAttribute("goalList", allGoals);
+        return "goals/goalsList";
+    }
+
 }
