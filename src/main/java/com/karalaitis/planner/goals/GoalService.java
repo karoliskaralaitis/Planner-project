@@ -1,6 +1,7 @@
 package com.karalaitis.planner.goals;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class GoalService {
     private GoalDao goalDao;
 
     @Autowired
-    public GoalService(GoalDao goalDao){
+    public GoalService(@Qualifier("goalJDBCDao") GoalDao goalDao){
         this.goalDao = goalDao;
     }
 

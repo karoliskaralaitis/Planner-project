@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.UUID;
 
-@Primary
 @Repository
 public class GoalJDBCDao implements GoalDao{
     @Override
