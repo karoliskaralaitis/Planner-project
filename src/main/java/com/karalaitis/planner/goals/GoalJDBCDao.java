@@ -1,13 +1,10 @@
 package com.karalaitis.planner.goals;
 
+import com.karalaitis.planner.mapper.GoalJDBCRowMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,7 +13,7 @@ import java.util.UUID;
 public class GoalJDBCDao implements GoalDao{
 
     private final JdbcTemplate jdbcTemplate;
-
+    private final GoalJDBCRowMapper goalJDBCRowMapper;
     @Override
     public void save(Goal goal) {
         goal.setGoalId(UUID.randomUUID());
@@ -33,25 +30,13 @@ public class GoalJDBCDao implements GoalDao{
     @Override
     public List<Goal> getAll() {
         return jdbcTemplate.query(
-                "SELECT * FROM GOAL",
-                (rs, rowNum) -> Goal.builder()
-                        .goalId(UUID.fromString(rs.getString("goal_id")))
-                        .name(rs.getString("name"))
-                        .doByDate(rs.getString("doByDate"))
-                        .comment(rs.getString("comment"))
-                        .build());
+            "SELECT * FROM GOAL", goalJDBCRowMapper);
     }
 
     @Override
     public Goal getGoalByUUID(UUID id) {
         final List<Goal> goals = jdbcTemplate.query(
-                String.format("SELECT * FROM GOAL WHERE goal_id = '%s'", id.toString()),
-                (rs, rowNum) -> Goal.builder()
-                        .goalId(UUID.fromString(rs.getString("goal_id")))
-                        .name(rs.getString("name"))
-                        .doByDate(rs.getString("doByDate"))
-                        .comment(rs.getString("comment"))
-                        .build());
+                String.format("SELECT * FROM GOAL WHERE goal_id = '%s'", id.toString()), goalJDBCRowMapper);
         return goals.get(0);
     }
 
