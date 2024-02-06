@@ -7,7 +7,7 @@
 </head>
 <body>
 <div th:if="${#lists.isEmpty(goalList)}">Goal list is empty!</div>
-<div th:unless="${not #lists.isEmpty(goalList)}">
+<div th:if="${not #lists.isEmpty(goalList)}">
     <table class="table table-striped">
         <thead>
             <tr>
