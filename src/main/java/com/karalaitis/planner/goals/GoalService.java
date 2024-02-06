@@ -32,7 +32,7 @@ public class GoalService {
         return goalDao.getGoalByUUID(id);
     }
 
-    public void deleteGoaltByUUID(UUID id) {
+    public void deleteGoalByUUID(UUID id) {
         goalDao.deleteGoalByUUID(id);
     }
 }

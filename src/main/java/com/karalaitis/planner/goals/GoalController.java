@@ -33,13 +33,14 @@ public class GoalController {
     }
 
     @PostMapping("/goals/create")
-    public String createAGoal(Model model, Goal goal) {
+    public String createGoal(Model model, Goal goal) {
         goalService.saveGoal(goal);
-        return getGoals(model);
+        model.addAttribute("message", "Goal added successfully!");
+        return "goals/goals";
     }
 
     @PostMapping("/goals/{goalId}/update")
-    public String updateAGoal(Model model, Goal goal) {
+    public String updateGoal(Model model, Goal goal) {
         goalService.updateGoal(goal);
         return getGoals(model);
     }
@@ -53,7 +54,7 @@ public class GoalController {
 
     @GetMapping("/goals/{goalId}/delete")
     public String deleteGoal(Model model, @PathVariable UUID goalId) {
-        goalService.deleteGoaltByUUID(goalId);
+        goalService.deleteGoalByUUID(goalId);
         return getGoals(model);
     }
 }
