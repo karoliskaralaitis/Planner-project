@@ -1,8 +1,12 @@
 package com.karalaitis.planner.goals.controllers;
 
 import com.karalaitis.planner.goals.Goal;
+import com.karalaitis.planner.goals.dto.GoalDto;
 import com.karalaitis.planner.goals.service.GoalService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
+@Log4j2
 public class GoalController {
 
     private GoalService goalService;
@@ -42,21 +47,21 @@ public class GoalController {
     }
 
     @PostMapping("/goals/{goalId}/update")
-    public String updateGoal(Model model, Goal goal) {
+    public String updateGoal(Model model, Pageable pageable, Goal goal, @PathVariable UUID goalId) {
         goalService.updateGoal(goal);
-        return getGoals(model);
+        return getGoals(model, pageable);
     }
 
     @GetMapping("/goals")
-    public String getGoals(Model model){
-        List<Goal> allGoals = goalService.getAllGoals();
+    public String getGoals(Model model, Pageable pageable){
+        final Page<GoalDto> allGoals = goalService.getAllGoalsPage(pageable);
         model.addAttribute("goalList", allGoals);
         return "goals/goalsList";
     }
 
     @GetMapping("/goals/{goalId}/delete")
-    public String deleteGoal(Model model, @PathVariable UUID goalId) {
+    public String deleteGoal(Model model, Pageable pageable, @PathVariable UUID goalId) {
         goalService.deleteGoalByUUID(goalId);
-        return getGoals(model);
+        return getGoals(model, pageable);
     }
 }

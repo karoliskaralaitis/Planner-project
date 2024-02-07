@@ -3,6 +3,8 @@ package com.karalaitis.planner.goals.dao;
 import com.karalaitis.planner.goals.Goal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -32,6 +34,11 @@ public class GoalJPADao implements GoalDao{
     @Override
     public List<Goal> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Page<Goal> getPage(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override

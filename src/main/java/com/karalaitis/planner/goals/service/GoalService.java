@@ -1,22 +1,27 @@
 package com.karalaitis.planner.goals.service;
 
 import com.karalaitis.planner.goals.Goal;
+import com.karalaitis.planner.goals.mappers.GoalMapper;
+import com.karalaitis.planner.goals.dto.GoalDto;
 import com.karalaitis.planner.goals.dao.GoalDao;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
 public class GoalService {
 
     private GoalDao goalDao;
+    private GoalMapper mapper;
 
     @Autowired
-    public GoalService(GoalDao goalDao){
+    public GoalService(GoalDao goalDao, GoalMapper mapper){
         this.goalDao = goalDao;
+        this.mapper = mapper;
     }
 
     public void saveGoal(Goal goal) {
@@ -27,12 +32,12 @@ public class GoalService {
         goalDao.update(goal);
     }
 
-    public List<Goal> getAllGoals() {
-       return goalDao.getAll();
+    public Page<GoalDto> getAllGoalsPage(Pageable pageable) {
+       return goalDao.getPage(pageable).map(goal -> mapper.toGoalDto(goal));
     }
 
-    public Goal getGoalByUUID(UUID id){
-        return goalDao.getGoalByUUID(id);
+    public GoalDto getGoalByUUID(UUID id){
+        return mapper.toGoalDto(goalDao.getGoalByUUID(id));
     }
 
     @Transactional

@@ -10,6 +10,5 @@ import java.util.UUID;
 public interface GoalRepository extends JpaRepository<Goal, Long> {
 
     Goal findByGoalId(UUID id);
-
     void deleteGoalByGoalId(UUID id);
 }
