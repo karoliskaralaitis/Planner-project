@@ -1,5 +1,7 @@
-package com.karalaitis.planner.goals;
+package com.karalaitis.planner.goals.service;
 
+import com.karalaitis.planner.goals.Goal;
+import com.karalaitis.planner.goals.dao.GoalDao;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

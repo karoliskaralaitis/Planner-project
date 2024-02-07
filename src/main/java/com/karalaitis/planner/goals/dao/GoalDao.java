@@ -1,4 +1,6 @@
-package com.karalaitis.planner.goals;
+package com.karalaitis.planner.goals.dao;
+
+import com.karalaitis.planner.goals.Goal;
 
 import java.util.List;
 import java.util.UUID;
