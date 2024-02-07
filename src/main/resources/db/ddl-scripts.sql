@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS GOAL;
 
 CREATE TABLE GOAL (
-    id int primary key auto_increment,
-    goal_id UUID NOT NULL,
-    name varchar(800),
-    doByDate varchar(800),
-    comment varchar(800)
+    ID int primary key auto_increment,
+    GOAL_ID UUID NOT NULL,
+    NAME varchar(800),
+    DO_BY_DATE varchar(800),
+    COMMENT varchar(800)
 );

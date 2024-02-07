@@ -1,4 +1,4 @@
-INSERT INTO GOAL(GOAL_ID, NAME, DOBYDATE, COMMENT)
+INSERT INTO GOAL(GOAL_ID, NAME, DO_BY_DATE, COMMENT)
 VALUES
     ('260f7043-d0bf-4d99-b143-6ee555685561', 'Stop smoking', '2024-03-01', 'Quit smoking as fast as you can'),
     ('260f7043-d0bf-4d99-b143-6ee555685562', 'Read more books', '2025-01-01', 'Read 100 books before next year'),

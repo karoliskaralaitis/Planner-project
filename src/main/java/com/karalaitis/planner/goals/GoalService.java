@@ -1,7 +1,7 @@
 package com.karalaitis.planner.goals;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class GoalService {
     private GoalDao goalDao;
 
     @Autowired
-    public GoalService(@Qualifier("goalJDBCDao") GoalDao goalDao){
+    public GoalService(GoalDao goalDao){
         this.goalDao = goalDao;
     }
 
@@ -33,6 +33,7 @@ public class GoalService {
         return goalDao.getGoalByUUID(id);
     }
 
+    @Transactional
     public void deleteGoalByUUID(UUID id) {
         goalDao.deleteGoalByUUID(id);
     }

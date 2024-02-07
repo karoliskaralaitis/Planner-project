@@ -1,5 +1,6 @@
 package com.karalaitis.planner.goals;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
@@ -9,7 +10,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Entity
 public class Goal {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private UUID goalId;
     private String name;
     private String doByDate;
