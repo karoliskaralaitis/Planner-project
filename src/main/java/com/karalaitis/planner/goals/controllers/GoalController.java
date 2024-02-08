@@ -6,6 +6,7 @@ import com.karalaitis.planner.goals.service.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,20 +29,20 @@ public class GoalController {
     @GetMapping("/goals/create")
     public String showGoalCreationPage(Model model){
         model.addAttribute("goal", Goal.builder().build());
-        return "goals/goals";
+        return "goals/goalsCreate";
     }
 
     @GetMapping("/goals/{goalId}/update")
     public String showGoalUpdatePage(Model model, @PathVariable UUID goalId){
         model.addAttribute("goal", goalService.getGoalByUUID(goalId));
-        return "goals/goals";
+        return "goals/goalsCreate";
     }
 
     @PostMapping("/goals/create")
     public String createGoal(Model model, Goal goal) {
         goalService.saveGoal(goal);
         model.addAttribute("message", "Goal added successfully!");
-        return "goals/goals";
+        return "goals/goalsCreate";
     }
 
     @PostMapping("/goals/{goalId}/update")
@@ -51,7 +52,7 @@ public class GoalController {
     }
 
     @GetMapping("/goals")
-    public String getGoals(Model model, @PageableDefault(size = 3) Pageable pageable){
+    public String getGoals(Model model, @PageableDefault(size = 3, sort = {"doByDate"}, direction = Sort.Direction.ASC) Pageable pageable){
         final Page<GoalDto> allGoals = goalService.getAllGoalsPage(pageable);
         model.addAttribute("goalList", allGoals);
         return "goals/goalsList";
