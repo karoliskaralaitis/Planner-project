@@ -12,7 +12,8 @@ public class GoalMapper {
                 goal.getGoalId(),
                 goal.getName(),
                 goal.getDoByDate(),
-                goal.getComment()
+                goal.getComment(),
+                goal.getDateOfCreation()
         );
     }
 }

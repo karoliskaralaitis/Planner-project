@@ -7,13 +7,13 @@
 </head>
 <body>
 <th:text></th:text>
-<h1>Goal List</h1>
+<h1>Goal</h1>
 <form method="post" th:object="${goal}">
 
     <label>Name</label>
     <input type="text" placeholder="Name" th:field="*{name}"><br/>
     <label>Do by date</label>
-    <input type="text" placeholder="Do by date" th:field="*{doByDate}"><br/>
+    <input type="date" th:field="*{doByDate}"><br/>
     <label>Comment</label>
     <input type="text" placeholder="Comment" th:field="*{comment}"><br/>
 

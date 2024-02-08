@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Builder
 @Data
@@ -18,9 +20,19 @@ public class Goal {
     private long id;
     private UUID goalId;
     private String name;
-    private String doByDate;
-//    private int numberOfTasks;
-//    private int numberOfSteps;
+
+    @Column(name = "DO_BY_DATE")
+    private LocalDate doByDate;
+
+//    private long numberOfTasks;
+//    private long numberOfSteps;
     private String comment;
-//    private String dateOfCreation;
+
+    @Column(name = "DATE_OF_CREATION")
+    private LocalDateTime dateOfCreation;
+
+    @PrePersist
+    protected void onCreate() {
+        dateOfCreation = LocalDateTime.now();
+    }
 }
