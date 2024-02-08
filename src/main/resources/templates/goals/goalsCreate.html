@@ -17,7 +17,7 @@
     <label>Comment</label>
     <input type="text" placeholder="Comment" th:field="*{comment}"><br/>
 
-    <div class="alert alert-success" role="alert" th:text="${message}">
+    <div class="alert alert-success" role="alert" th:text="${param.message}">
         Success message on goal creation
     </div>
     <button type="submit">PRESS HERE</button>

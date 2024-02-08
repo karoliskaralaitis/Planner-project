@@ -43,7 +43,7 @@ public class GoalController {
     public String createGoal(Model model, Goal goal) {
         goalService.saveGoal(goal);
         model.addAttribute("message", "Goal added successfully!");
-        return "goals/create";
+        return "redirect:/goals/create?message=Goal added successfully!";
     }
 
     @PostMapping(HttpEndpoints.GOALS_UPDATE)
