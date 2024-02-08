@@ -28,8 +28,9 @@ public class GoalController {
     }
 
     @GetMapping(HttpEndpoints.GOALS_CREATE)
-    public String showGoalCreationPage(Model model){
+    public String showGoalCreationPage(Model model, String message){
         model.addAttribute("goal", Goal.builder().build());
+        model.addAttribute("message", message);
         return "goals/goalsCreate";
     }
 
