@@ -12,27 +12,33 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th><a th:with="directionVariable=${goalList.sort.getOrderFor('name')?.direction}"
+            <th class="col-md-5">
+                <a th:with="directionVariable=${goalList.sort.getOrderFor('name')?.direction}"
                    th:href="@{/goals(sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                 <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
                    aria-hidden="true"
                    th:if="${goalList.sort.getOrderFor('name') ne null}"></i>
-                <span th:text="#{goalsList.name}">Name</span></a>
+                <span th:text="#{goalsList.name}">Name</span>
+                </a>
             </th>
-            <th><a th:with="directionVariable=${goalList.sort.getOrderFor('doByDate')?.direction}"
+            <th class="col-md-2">
+                <a th:with="directionVariable=${goalList.sort.getOrderFor('doByDate')?.direction}"
                    th:href="@{/goals(sort='doByDate,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                 <i th:class="'fa ' + ${directionVariable.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
                    aria-hidden="true"
                    th:if="${goalList.sort.getOrderFor('doByDate') ne null}"></i>
-                <span th:text="#{goalsList.doByDate}">Do by date</span></a>
+                <span th:text="#{goalsList.doByDate}">Do by date</span>
+                </a>
             </th>
-            <th th:text="#{goalsList.comment}">Comment</th>
-            <th><a th:with="directionVariable=${goalList.sort.getOrderFor('dateOfCreation')?.direction}"
+            <th th:text="#{goalsList.comment}" class="col-md-5">Comment</th>
+            <th class="col-md-2">
+                <a th:with="directionVariable=${goalList.sort.getOrderFor('dateOfCreation')?.direction}"
                    th:href="@{/goals(sort='dateOfCreation,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                 <i th:class="'fa ' + ${directionVariable.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
                    aria-hidden="true"
                    th:if="${goalList.sort.getOrderFor('dateOfCreation') ne null}"></i>
-                <span th:text="#{goalsList.dateOfCreation}">Date Of Creation</span></a>
+                <span th:text="#{goalsList.dateOfCreation}">Date Of Creation</span>
+                </a>
             </th>
         </tr>
         </thead>
@@ -43,7 +49,8 @@
                 <td th:text="${goal.Comment}"></td>
                 <td th:text="${goal.DateOfCreation}"></td>
                 <td><a th:href="@{/goals/{goalId}/delete(goalId=${goal.goalId})}"
-                       th:text="#{goalsList.delete}">Delete</a></td>
+                       th:text="#{goalsList.delete}"
+                       class="btn btn-danger">Delete</a></td>
             </tr>
         </tbody>
     </table>
