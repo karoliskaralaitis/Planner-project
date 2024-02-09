@@ -52,7 +52,7 @@ public class GoalController {
     @PostMapping(HttpEndpoints.GOALS_UPDATE)
     public String updateGoal(Model model, Pageable pageable, Goal goal, @PathVariable UUID goalId) {
         goalService.updateGoal(goal);
-        return getGoals(model, pageable);
+        return "redirect:/goals";
     }
 
     @GetMapping(HttpEndpoints.GOALS)

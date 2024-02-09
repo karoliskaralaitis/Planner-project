@@ -28,7 +28,11 @@ public class GoalJPADao implements GoalDao{
 
     @Override
     public void update(Goal goal) {
-        repository.save(goal);
+        var goalToUpdate = repository.findByGoalId(goal.getGoalId());
+        goalToUpdate.setName(goal.getName());
+        goalToUpdate.setDoByDate(goal.getDoByDate());
+        goalToUpdate.setComment(goal.getComment());
+        repository.save(goalToUpdate);
     }
 
     @Override
