@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Planner</title>
+    <title th:text="#{goalsList.title}">Goal list</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div th:if="${#lists.isEmpty(goalList)}">Goal list is empty!</div>
+<div th:if="${#lists.isEmpty(goalList)}" th:text="#{goalsList.empty}">Goal list is empty!</div>
 <div th:if="${not #lists.isEmpty(goalList)}" class="container">
     <table class="table table-striped">
         <thead>
@@ -16,20 +16,23 @@
                    th:href="@{/goals(sort='name,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                 <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
                    aria-hidden="true"
-                   th:if="${goalList.sort.getOrderFor('name') ne null}"></i>Name</a>
+                   th:if="${goalList.sort.getOrderFor('name') ne null}"></i>
+                <span th:text="#{goalsList.name}">Name</span></a>
             </th>
             <th><a th:with="directionVariable=${goalList.sort.getOrderFor('doByDate')?.direction}"
                    th:href="@{/goals(sort='doByDate,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                 <i th:class="'fa ' + ${directionVariable.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
                    aria-hidden="true"
-                   th:if="${goalList.sort.getOrderFor('doByDate') ne null}"></i>Do by date</a>
+                   th:if="${goalList.sort.getOrderFor('doByDate') ne null}"></i>
+                <span th:text="#{goalsList.doByDate}">Do by date</span></a>
             </th>
-            <th>Comment</th>
+            <th th:text="#{goalsList.comment}">Comment</th>
             <th><a th:with="directionVariable=${goalList.sort.getOrderFor('dateOfCreation')?.direction}"
                    th:href="@{/goals(sort='dateOfCreation,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
                 <i th:class="'fa ' + ${directionVariable.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
                    aria-hidden="true"
-                   th:if="${goalList.sort.getOrderFor('dateOfCreation') ne null}"></i>Date Of Creation</a>
+                   th:if="${goalList.sort.getOrderFor('dateOfCreation') ne null}"></i>
+                <span th:text="#{goalsList.dateOfCreation}">Date Of Creation</span></a>
             </th>
         </tr>
         </thead>
@@ -39,17 +42,19 @@
                 <td th:text="${goal.DoByDate}"></td>
                 <td th:text="${goal.Comment}"></td>
                 <td th:text="${goal.DateOfCreation}"></td>
-                <td><a th:href="@{/goals/{goalId}/delete(goalId=${goal.goalId})}">Delete</a></td>
+                <td><a th:href="@{/goals/{goalId}/delete(goalId=${goal.goalId})}"
+                       th:text="#{goalsList.delete}">Delete</a></td>
             </tr>
         </tbody>
     </table>
-    <span th:text="'Total elements: ' + ${goalList.totalElements}">Total elements</span>
-    <span th:text="'Total pages: ' + ${goalList.totalPages}">Total pages</span>
+    <span th:text="#{goalsList.totalElements(${goalList.totalElements})}">Total elements</span>
+    <span th:text="#{goalsList.totalPages(${goalList.totalPages})}">Total pages</span>
     <nav class="d-flex justify-content-center" aria-label="Page navigation">
         <ul class="pagination">
             <li class="page-item"
                 th:classappend="${!goalList.hasPrevious() ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/goals(page=${goalList.number} - 1)}">Previous</a>
+                <a class="page-link" th:href="@{/goals(page=${goalList.number} - 1)}"
+                   th:text="#{goalsList.previous}">Previous</a>
             </li>
             <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, goalList.totalPages - 1)}"
                 th:classappend="${pageNumber == goalList.number ? 'active' : ''}">
@@ -57,7 +62,8 @@
             </li>
             <li class="page-item"
                 th:classappend="${!goalList.hasNext() ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/goals(page=${goalList.number} + 1)}">Next</a>
+                <a class="page-link" th:href="@{/goals(page=${goalList.number} + 1)}"
+                   th:text="#{goalsList.next}">Next</a>
             </li>
         </ul>
     </nav>
