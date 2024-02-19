@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.BindingResult;
 
 
 import java.util.UUID;
@@ -31,19 +32,22 @@ public class GoalController {
 
     @GetMapping(HttpEndpoints.GOALS_CREATE)
     public String showGoalCreationPage(Model model, String message){
-        model.addAttribute("goal", GoalDto.builder().build());
+        model.addAttribute("goalDto", GoalDto.builder().build());
         model.addAttribute("message", messageService.getTranslatedMessage(message));
         return "goals/goalsCreate";
     }
 
     @GetMapping(HttpEndpoints.GOALS_UPDATE)
     public String showGoalUpdatePage(Model model, @PathVariable UUID goalId){
-        model.addAttribute("goal", goalService.getGoalByUUID(goalId));
+        model.addAttribute("goalDto", goalService.getGoalByUUID(goalId));
         return "goals/goalsCreate";
     }
 
     @PostMapping(HttpEndpoints.GOALS_CREATE)
-    public String createGoal(Model model, @Valid GoalDto goal) {
+    public String createGoal(Model model, @Valid GoalDto goal, BindingResult errors) {
+        if (errors.hasErrors()) {
+            return "goals/goalsCreate";
+        }
         goalService.saveGoal(goal);
         return "redirect:/goals/create?message=goal.create.message.success";
     }
