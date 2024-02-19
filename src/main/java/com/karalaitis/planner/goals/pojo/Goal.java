@@ -1,4 +1,4 @@
-package com.karalaitis.planner.goals;
+package com.karalaitis.planner.goals.pojo;
 
 import jakarta.persistence.*;
 import lombok.*;

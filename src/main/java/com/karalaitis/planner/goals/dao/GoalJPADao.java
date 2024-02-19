@@ -1,6 +1,6 @@
 package com.karalaitis.planner.goals.dao;
 
-import com.karalaitis.planner.goals.Goal;
+import com.karalaitis.planner.goals.pojo.Goal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;

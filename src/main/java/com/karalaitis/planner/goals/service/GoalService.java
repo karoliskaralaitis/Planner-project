@@ -1,6 +1,5 @@
 package com.karalaitis.planner.goals.service;
 
-import com.karalaitis.planner.goals.Goal;
 import com.karalaitis.planner.goals.mappers.GoalMapper;
 import com.karalaitis.planner.goals.dto.GoalDto;
 import com.karalaitis.planner.goals.dao.GoalDao;
@@ -29,8 +28,8 @@ public class GoalService {
         goalDao.save(goal);
     }
 
-    public void updateGoal(Goal goal) {
-        goalDao.update(goal);
+    public void updateGoal(GoalDto goalDto) {
+        goalDao.update(mapper.fromGoalDto(goalDto));
     }
 
     public Page<GoalDto> getAllGoalsPage(Pageable pageable) {

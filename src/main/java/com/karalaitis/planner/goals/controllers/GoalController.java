@@ -2,7 +2,6 @@ package com.karalaitis.planner.goals.controllers;
 
 import jakarta.validation.Valid;
 import com.karalaitis.planner.HttpEndpoints;
-import com.karalaitis.planner.goals.Goal;
 import com.karalaitis.planner.goals.dto.GoalDto;
 import com.karalaitis.planner.goals.service.GoalService;
 import com.karalaitis.planner.helper.MessageService;
@@ -53,8 +52,8 @@ public class GoalController {
     }
 
     @PostMapping(HttpEndpoints.GOALS_UPDATE)
-    public String updateGoal(Model model, Pageable pageable, Goal goal, @PathVariable UUID goalId) {
-        goalService.updateGoal(goal);
+    public String updateGoal(Model model, Pageable pageable, GoalDto goalDto, @PathVariable UUID goalId) {
+        goalService.updateGoal(goalDto);
         return "redirect:/goals";
     }
 

@@ -1,6 +1,6 @@
 package com.karalaitis.planner.goals.dao;
 
-import com.karalaitis.planner.goals.Goal;
+import com.karalaitis.planner.goals.pojo.Goal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
