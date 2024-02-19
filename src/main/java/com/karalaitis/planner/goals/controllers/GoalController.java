@@ -1,12 +1,12 @@
 package com.karalaitis.planner.goals.controllers;
 
+import jakarta.validation.Valid;
 import com.karalaitis.planner.HttpEndpoints;
 import com.karalaitis.planner.goals.Goal;
 import com.karalaitis.planner.goals.dto.GoalDto;
 import com.karalaitis.planner.goals.service.GoalService;
 import com.karalaitis.planner.helper.MessageService;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -31,7 +31,7 @@ public class GoalController {
 
     @GetMapping(HttpEndpoints.GOALS_CREATE)
     public String showGoalCreationPage(Model model, String message){
-        model.addAttribute("goal", Goal.builder().build());
+        model.addAttribute("goal", GoalDto.builder().build());
         model.addAttribute("message", messageService.getTranslatedMessage(message));
         return "goals/goalsCreate";
     }
@@ -43,9 +43,8 @@ public class GoalController {
     }
 
     @PostMapping(HttpEndpoints.GOALS_CREATE)
-    public String createGoal(Model model, Goal goal) {
+    public String createGoal(Model model, @Valid GoalDto goal) {
         goalService.saveGoal(goal);
-        model.addAttribute("message", "Goal added successfully!");
         return "redirect:/goals/create?message=goal.create.message.success";
     }
 

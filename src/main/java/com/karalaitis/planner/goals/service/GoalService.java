@@ -24,7 +24,8 @@ public class GoalService {
         this.mapper = mapper;
     }
 
-    public void saveGoal(Goal goal) {
+    public void saveGoal(GoalDto goalDto) {
+        var goal = mapper.fromGoalDto(goalDto);
         goalDao.save(goal);
     }
 

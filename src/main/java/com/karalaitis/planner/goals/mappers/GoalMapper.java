@@ -16,4 +16,14 @@ public class GoalMapper {
                 goal.getDateOfCreation()
         );
     }
+
+    public Goal fromGoalDto(GoalDto goalDto) {
+        return Goal.builder()
+                .goalId(goalDto.getGoalId())
+                .name(goalDto.getName())
+                .doByDate(goalDto.getDoByDate())
+                .comment(goalDto.getComment())
+                .dateOfCreation(goalDto.getDateOfCreation())
+                .build();
+    }
 }
