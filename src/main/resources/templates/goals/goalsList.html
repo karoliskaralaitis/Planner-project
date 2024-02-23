@@ -52,13 +52,10 @@
         </thead>
         <tbody>
             <tr th:each="goal: ${goalList}">
-                <td><a th:href="@{/goals/{goalId}/update(goalId=${goal.goalId})}" th:text="${goal.Name}"></a></td>
+                <td><a th:href="@{/goals/{goalId}/page(goalId=${goal.goalId})}" th:text="${goal.Name}"></a></td>
                 <td th:text="${goal.DoByDate}"></td>
                 <td th:text="${goal.Comment}"></td>
                 <td th:text="${goal.DateOfCreation}"></td>
-                <td><a th:href="@{/goals/{goalId}/delete(goalId=${goal.goalId})}"
-                       th:text="#{goalsList.delete}"
-                       class="btn btn-danger">Delete</a></td>
             </tr>
         </tbody>
     </table>

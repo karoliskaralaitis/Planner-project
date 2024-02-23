@@ -69,4 +69,10 @@ public class GoalController {
         goalService.deleteGoalByUUID(goalId);
         return getGoals(model, pageable);
     }
+
+    @GetMapping(HttpEndpoints.GOALS_PAGE)
+    public String getGoalPage(Model model, @PathVariable UUID goalId){
+        model.addAttribute("goalDto", goalService.getGoalByUUID(goalId));
+        return "goals/goalPage";
+    }
 }
