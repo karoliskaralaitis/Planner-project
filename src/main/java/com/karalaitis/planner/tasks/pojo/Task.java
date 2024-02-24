@@ -19,13 +19,23 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "TASK_ID")
     private UUID taskId;
+
+    @Column(name = "TASK_NAME")
     private String taskName;
+
+    @Column(name = "TASK_FINISH_DATE")
     private LocalDate taskFinishDate;
+
+    @Column(name = "TASK_COMMENT")
     private String taskComment;
+
+    @Column(name = "TASK_CREATION_DATE")
     private LocalDateTime taskCreationDate;
 
     @ManyToOne
-    @JoinColumn(name = "goal_id")
+    @JoinColumn(name = "GOAL_ID")
     private Goal goal;
 }

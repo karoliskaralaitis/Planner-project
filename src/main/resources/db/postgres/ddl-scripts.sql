@@ -1,10 +1,22 @@
-DROP TABLE IF EXISTS goal;
+DROP TABLE IF EXISTS TASK;
+DROP TABLE IF EXISTS GOAL;
 
-CREATE TABLE goal (
-                      id SERIAL primary key,
-                      goal_id UUID NOT NULL,
-                      name VARCHAR(800),
-                      do_by_date DATE,
-                      comment VARCHAR(800),
-                      date_of_creation TIMESTAMP
+CREATE TABLE GOAL (
+    ID SERIAL PRIMARY KEY,
+    GOAL_ID UUID NOT NULL,
+    NAME VARCHAR(800),
+    DO_BY_DATE DATE,
+    COMMENT VARCHAR(800),
+    DATE_OF_CREATION TIMESTAMP
+);
+
+CREATE TABLE TASK (
+    ID SERIAL PRIMARY KEY,
+    TASK_ID UUID NOT NULL,
+    TASK_NAME VARCHAR(800),
+    TASK_FINISH_DATE DATE,
+    TASK_COMMENT VARCHAR(800),
+    TASK_CREATION_DATE TIMESTAMP,
+    GOAL_ID INT,
+    CONSTRAINT FK_GOAL_ID FOREIGN KEY (GOAL_ID) REFERENCES GOAL(ID)
 );

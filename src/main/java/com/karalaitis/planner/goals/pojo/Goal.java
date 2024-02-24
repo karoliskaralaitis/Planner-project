@@ -21,11 +21,17 @@ public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "GOAL_ID")
     private UUID goalId;
+
+    @Column(name = "NAME")
     private String name;
 
     @Column(name = "DO_BY_DATE")
     private LocalDate doByDate;
+
+    @Column(name = "COMMENT")
     private String comment;
 
     @Column(name = "DATE_OF_CREATION")
