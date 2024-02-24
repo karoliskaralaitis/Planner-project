@@ -30,9 +30,4 @@ public class Goal {
 
     @Column(name = "DATE_OF_CREATION")
     private LocalDateTime dateOfCreation;
-
-    @PrePersist
-    protected void onCreate() {
-        dateOfCreation = LocalDateTime.now();
-    }
 }
