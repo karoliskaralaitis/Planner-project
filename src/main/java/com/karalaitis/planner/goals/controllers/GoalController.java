@@ -1,5 +1,7 @@
 package com.karalaitis.planner.goals.controllers;
 
+import com.karalaitis.planner.tasks.dto.TaskDto;
+import com.karalaitis.planner.tasks.service.TaskService;
 import jakarta.validation.Valid;
 import com.karalaitis.planner.HttpEndpoints;
 import com.karalaitis.planner.goals.dto.GoalDto;
@@ -28,6 +30,7 @@ public class GoalController {
 
     private final GoalService goalService;
     private final MessageService messageService;
+    private final TaskService taskService;
 
     @GetMapping(HttpEndpoints.GOALS_CREATE)
     public String showGoalCreationPage(Model model, String message){
@@ -71,8 +74,10 @@ public class GoalController {
     }
 
     @GetMapping(HttpEndpoints.GOALS_PAGE)
-    public String getGoalPage(Model model, @PathVariable UUID goalId){
+    public String getGoalPage(Model model, @PathVariable UUID goalId, @PageableDefault(size = 3, sort = {"taskFinishDate"}, direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("goalDto", goalService.getGoalByUUID(goalId));
+        final Page<TaskDto> allTasks = taskService.getAllTasks(pageable);
+        model.addAttribute("allTasks", allTasks);
         return "goals/goalPage";
     }
 }
