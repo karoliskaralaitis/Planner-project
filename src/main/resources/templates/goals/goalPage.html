@@ -78,18 +78,16 @@
     </table>
     <nav class="d-flex justify-content-center" aria-label="Page navigation">
         <ul class="pagination">
-            <li class="page-item"
-                th:classappend="${!allTasks.hasPrevious() ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/goals/{goalId}/page(page=${allTasks.number - 1})}"
+            <li class="page-item" th:classappend="${!allTasks.hasPrevious()} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${allTasks.number - 1})}"
                    th:text="#{goalsList.previous}">Previous</a>
             </li>
             <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, allTasks.totalPages - 1)}"
                 th:classappend="${pageNumber == allTasks.number ? 'active' : ''}">
-                <a class="page-link" th:href="@{/goals/{goalId}/page(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+                <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
             </li>
-            <li class="page-item"
-                th:classappend="${!allTasks.hasNext() ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/goals/{goalId}/page(page=${allTasks.number + 1})}"
+            <li class="page-item" th:classappend="${!allTasks.hasNext()} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${allTasks.number + 1})}"
                    th:text="#{goalsList.next}">Next</a>
             </li>
         </ul>
