@@ -34,63 +34,65 @@
                th:text="#{goalPage.delete}"
                class="btn btn-danger">Delete</a>
     </div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th class="col-md-5">
-                <a th:with="directionVariable=${allTasks.sort.getOrderFor('taskName')?.direction}"
-                   th:href="@{/goals(sort='taskName,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
-                    <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
-                       aria-hidden="true"
-                       th:if="${allTasks.sort.getOrderFor('taskName') ne null}"></i>
-                    <span th:text="#{goalsList.name}">Name</span>
-                </a>
-            </th>
-            <th class="col-md-2">
-                <a th:with="directionVariable=${allTasks.sort.getOrderFor('taskFinishDate')?.direction}"
-                   th:href="@{/goals(sort='taskFinishDate,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
-                    <i th:class="'fa ' + ${directionVariable.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
-                       aria-hidden="true"
-                       th:if="${allTasks.sort.getOrderFor('taskFinishDate') ne null}"></i>
-                    <span th:text="#{goalsList.doByDate}">Do by date</span>
-                </a>
-            </th>
-            <th th:text="#{goalsList.comment}" class="col-md-5">Comment</th>
-            <th class="col-md-2">
-                <a th:with="directionVariable=${allTasks.sort.getOrderFor('taskCreationDate')?.direction}"
-                   th:href="@{/goals(sort='taskCreationDate,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
-                    <i th:class="'fa ' + ${directionVariable.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
-                       aria-hidden="true"
-                       th:if="${allTasks.sort.getOrderFor('taskCreationDate') ne null}"></i>
-                    <span th:text="#{goalsList.dateOfCreation}">Date Of Creation</span>
-                </a>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="task: ${allTasks}">
-            <td th:text="${task.taskName}"></td>
-            <td th:text="${task.taskFinishDate}"></td>
-            <td th:text="${task.taskComment}"></td>
-            <td th:text="${task.taskFinishDate}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <nav class="d-flex justify-content-center" aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item" th:classappend="${!allTasks.hasPrevious()} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${allTasks.number - 1})}"
-                   th:text="#{goalsList.previous}">Previous</a>
-            </li>
-            <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, allTasks.totalPages - 1)}"
-                th:classappend="${pageNumber == allTasks.number ? 'active' : ''}">
-                <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
-            </li>
-            <li class="page-item" th:classappend="${!allTasks.hasNext()} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${allTasks.number + 1})}"
-                   th:text="#{goalsList.next}">Next</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="col-md-5">
+                    <a th:with="directionVariable=${allTasks.sort.getOrderFor('taskName')?.direction}"
+                       th:href="@{/goals/{goalId}/page(goalId=${goalId}, sort='taskName,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
+                        <i th:class="'fa ' + ${directionVariable?.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
+                           aria-hidden="true"
+                           th:if="${allTasks.sort.getOrderFor('taskName') ne null}"></i>
+                        <span th:text="#{goalsList.name}">Name</span>
+                    </a>
+                </th>
+                <th class="col-md-2">
+                    <a th:with="directionVariable=${allTasks.sort.getOrderFor('taskFinishDate')?.direction}"
+                       th:href="@{/goals/{goalId}/page(goalId=${goalId}, sort='taskFinishDate,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
+                        <i th:class="'fa ' + ${directionVariable.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
+                           aria-hidden="true"
+                           th:if="${allTasks.sort.getOrderFor('taskFinishDate') ne null}"></i>
+                        <span th:text="#{goalsList.doByDate}">Do by date</span>
+                    </a>
+                </th>
+                <th th:text="#{goalsList.comment}" class="col-md-5">Comment</th>
+                <th class="col-md-2">
+                    <a th:with="directionVariable=${allTasks.sort.getOrderFor('taskCreationDate')?.direction}"
+                       th:href="@{/goals/{goalId}/page(goalId=${goalId}, sort='taskCreationDate,' + ${directionVariable?.name eq 'ASC' ? 'DESC' : 'ASC'})}">
+                        <i th:class="'fa ' + ${directionVariable.name eq 'ASC' ? 'fa-arrow-up' : 'fa-arrow-down'}"
+                           aria-hidden="true"
+                           th:if="${allTasks.sort.getOrderFor('taskCreationDate') ne null}"></i>
+                        <span th:text="#{goalsList.dateOfCreation}">Date Of Creation</span>
+                    </a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="task: ${allTasks}">
+                <td th:text="${task.taskName}"></td>
+                <td th:text="${task.taskFinishDate}"></td>
+                <td th:text="${task.taskComment}"></td>
+                <td th:text="${task.taskFinishDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <nav class="d-flex justify-content-center" aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${!allTasks.hasPrevious()} ? 'disabled' : ''">
+                    <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${allTasks.number - 1})}"
+                       th:text="#{goalsList.previous}">Previous</a>
+                </li>
+                <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, allTasks.totalPages - 1)}"
+                    th:classappend="${pageNumber == allTasks.number ? 'active' : ''}">
+                    <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+                </li>
+                <li class="page-item" th:classappend="${!allTasks.hasNext()} ? 'disabled' : ''">
+                    <a class="page-link" th:href="@{/goals/{goalId}/page(goalId=${goalId}, page=${allTasks.number + 1})}"
+                       th:text="#{goalsList.next}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </body>
 </html>
