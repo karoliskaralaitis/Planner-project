@@ -26,7 +26,7 @@ public class TaskService {
         return taskDao.getTaskPage(pageable).map(task -> taskMapper.toTaskDto(task));
     }
 
-    public Page<TaskDto> getTasksByGoalId(long goalId, Pageable pageable) {
+    public Page<TaskDto> getTasksByGoalId(UUID goalId, Pageable pageable) {
         return taskDao.getTasksByGoalId(goalId, pageable).map(taskMapper::toTaskDto);
     }
 }

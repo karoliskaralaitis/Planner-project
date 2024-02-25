@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
 public class TaskDao {
 
@@ -20,7 +22,7 @@ public class TaskDao {
         return repository.findAll(pageable);
     }
 
-    public Page<Task> getTasksByGoalId(long goalId, Pageable pageable) {
-        return repository.findByGoalId(goalId, pageable);
+    public Page<Task> getTasksByGoalId(UUID goalId, Pageable pageable) {
+        return repository.findByGoalGoalId(goalId, pageable);
     }
 }

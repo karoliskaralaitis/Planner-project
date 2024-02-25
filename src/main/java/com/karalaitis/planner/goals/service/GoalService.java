@@ -33,7 +33,7 @@ public class GoalService {
     }
 
     public Page<GoalDto> getAllGoalsPage(Pageable pageable) {
-       return goalDao.getPage(pageable).map(goal -> mapper.toGoalDto(goal));
+        return goalDao.getPage(pageable).map(goal -> mapper.toGoalDto(goal));
     }
 
     public GoalDto getGoalByUUID(UUID id){

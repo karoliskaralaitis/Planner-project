@@ -12,11 +12,12 @@ import java.util.UUID;
 
 @Repository
 @Primary
-public class GoalJPADao implements GoalDao{
+public class GoalJPADao implements GoalDao {
 
-    GoalRepository repository;
+    private final GoalRepository repository;
+
     @Autowired
-    public GoalJPADao(GoalRepository goalRepository){
+    public GoalJPADao(GoalRepository goalRepository) {
         this.repository = goalRepository;
     }
 

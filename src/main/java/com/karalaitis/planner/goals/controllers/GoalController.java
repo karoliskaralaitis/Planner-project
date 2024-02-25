@@ -76,7 +76,7 @@ public class GoalController {
     @GetMapping(HttpEndpoints.GOALS_PAGE)
     public String getGoalPage(Model model, @PathVariable UUID goalId, @PageableDefault(size = 3, sort = {"taskFinishDate"}, direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("goalDto", goalService.getGoalByUUID(goalId));
-        final Page<TaskDto> allTasks = taskService.getAllTasks(pageable);
+        final Page<TaskDto> allTasks = taskService.getTasksByGoalId(goalId, pageable);
         model.addAttribute("allTasks", allTasks);
         return "goals/goalPage";
     }
