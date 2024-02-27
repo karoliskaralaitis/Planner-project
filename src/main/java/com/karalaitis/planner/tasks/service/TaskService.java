@@ -33,9 +33,6 @@ public class TaskService {
         return taskDao.getTasksByGoalId(goalId, pageable).map(taskMapper::toTaskDto);
     }
 
-    /**
-     *MAKE SURE DELETE METHOD WORKS
-     */
     @Transactional
     public void deleteTaskByUUID(UUID id) {
         taskDao.deleteTaskByUUID(id);

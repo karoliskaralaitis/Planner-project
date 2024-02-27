@@ -26,9 +26,6 @@ public class TaskDao {
         return repository.findByGoalGoalId(goalId, pageable);
     }
 
-    /**
-     *MAKE SURE DELETE METHOD WORKS
-     */
     public void deleteTaskByUUID(UUID id) {
         repository.deleteTaskByTaskId(id);
     }
