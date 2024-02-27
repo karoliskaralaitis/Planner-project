@@ -74,6 +74,9 @@
                 <td th:text="${task.taskFinishDate}"></td>
                 <td th:text="${task.taskComment}"></td>
                 <td th:text="${task.taskFinishDate}"></td>
+                <!-- !!!MAKE SURE DELETE WORKS!!! -->
+                <td><a th:href="@{/goals/{goalId}/page/deleteTask/{taskId}(goalId=${goalId},taskId=${taskId})}">Delete</a></td>
+                <!-- !!!MAKE SURE DELETE WORKS!!! -->
             </tr>
             </tbody>
         </table>

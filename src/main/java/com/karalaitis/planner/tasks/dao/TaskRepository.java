@@ -12,4 +12,10 @@ import java.util.UUID;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
     Page<Task> findByGoalGoalId(UUID goalId, Pageable pageable);
+
+    /**
+     *MAKE SURE DELETE METHOD WORKS
+     */
+    void deleteTaskByTaskId(UUID id);
+    Task findByTaskId(UUID taskId);
 }
