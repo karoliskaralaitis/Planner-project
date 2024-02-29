@@ -1,6 +1,6 @@
-package com.karalaitis.planner.tasks.dao;
+package com.karalaitis.planner.goals.dao;
 
-import com.karalaitis.planner.tasks.pojo.Task;
+import com.karalaitis.planner.goals.pojo.Task;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

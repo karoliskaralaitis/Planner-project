@@ -1,4 +1,4 @@
-package com.karalaitis.planner.tasks.dto;
+package com.karalaitis.planner.goals.dto;
 
 import jakarta.persistence.PrePersist;
 import jakarta.validation.constraints.NotBlank;

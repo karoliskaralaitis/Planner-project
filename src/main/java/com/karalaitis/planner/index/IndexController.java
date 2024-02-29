@@ -10,6 +10,4 @@ public class IndexController {
     public String showIndexPage(){
         return "index/index";
     }
-
-
 }

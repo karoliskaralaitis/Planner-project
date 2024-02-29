@@ -1,7 +1,7 @@
 package com.karalaitis.planner.goals.controllers;
 
-import com.karalaitis.planner.tasks.dto.TaskDto;
-import com.karalaitis.planner.tasks.service.TaskService;
+import com.karalaitis.planner.goals.dto.TaskDto;
+import com.karalaitis.planner.goals.service.TaskService;
 import jakarta.validation.Valid;
 import com.karalaitis.planner.HttpEndpoints;
 import com.karalaitis.planner.goals.dto.GoalDto;

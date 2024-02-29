@@ -7,4 +7,5 @@ public class HttpEndpoints {
     public static final String GOALS_UPDATE = GOALS + "/{goalId}/update";
     public static final String GOALS_DELETE = GOALS + "/{goalId}/delete";
     public static final String GOALS_PAGE = GOALS + "/{goalId}/page";
+    public static final String TASK_DELETE = GOALS_PAGE + "/deleteTask/{taskId}";
 }

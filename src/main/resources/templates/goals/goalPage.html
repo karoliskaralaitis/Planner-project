@@ -33,7 +33,11 @@
             <a th:href="@{/goals/{goalId}/delete(goalId=${goalDto.goalId})}"
                th:text="#{goalPage.delete}"
                class="btn btn-danger">Delete</a>
+            <a th:href="@{/goals/{goalId}/page/addTask(goalId=${goalDto.goalId})}"
+               th:text="#{goalPage.CreateTaskBtn}"
+               class="btn btn-success">Create A Task</a>
     </div>
+    <h2 th:text="#{goalsPage.taskName}">Tasks</h2>
     <div class="container">
         <table class="table table-striped">
             <thead>
@@ -74,7 +78,8 @@
                 <td th:text="${task.taskFinishDate}"></td>
                 <td th:text="${task.taskComment}"></td>
                 <td th:text="${task.taskFinishDate}"></td>
-                <td><a th:href="@{/goals/{goalId}/page/deleteTask/{taskId}(goalId=${goalId}, taskId=${task.taskId})}">Delete</a></td>
+                <td><a th:href="@{/goals/{goalId}/page/deleteTask/{taskId}(goalId=${goalId}, taskId=${task.taskId})}"
+                       th:text="#{goalPage.delete}" class="btn btn-danger">Delete</a></td>
             </tr>
             </tbody>
         </table>

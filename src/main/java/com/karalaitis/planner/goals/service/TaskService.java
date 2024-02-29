@@ -1,10 +1,9 @@
-package com.karalaitis.planner.tasks.service;
+package com.karalaitis.planner.goals.service;
 
-import com.karalaitis.planner.tasks.dao.TaskDao;
-import com.karalaitis.planner.tasks.dto.TaskDto;
-import com.karalaitis.planner.tasks.mappers.TaskMapper;
-import com.karalaitis.planner.tasks.pojo.Task;
-import jakarta.persistence.EntityNotFoundException;
+import com.karalaitis.planner.goals.dao.TaskDao;
+import com.karalaitis.planner.goals.dto.TaskDto;
+import com.karalaitis.planner.goals.mappers.TaskMapper;
+import com.karalaitis.planner.goals.pojo.Task;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
