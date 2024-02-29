@@ -9,38 +9,65 @@
     <script type="text/javascript" src="./../js/language.js"></script>
 </head>
 <body>
-<th:text></th:text>
-<div>
-    <label for="languageSelector"></label>
-    <select id="languageSelector">
-        <option th:text="#{language.choose}">Choose language</option>
-        <option value="LT" th:text="'Lietuvių'"></option>
-        <option value="EN" th:text="'English'"></option>
-    </select>
+<div class="container-xl">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Planner</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" th:href="@{/goals}" th:text="#{goalsList.title}">Goal list</a>
+                        <a class="nav-link" th:href="@{/goals/create}" th:text="#{index.createGoalBtn}">Create a goal</a>
+                        <select id="languageSelector">
+                            <option th:text="#{language.choose}">Choose language</option>
+                            <option value="LT" th:text="'Lietuvių'"></option>
+                            <option value="EN" th:text="'English'"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <h1 th:text="#{goalsCreate.header}">Goal</h1>
+            <form method="post" th:object="${taskDto}">
+                <div class="form-group">
+                    <label th:text="#{goalsCreate.name}">Name</label>
+                    <input class="form-control" type="text" placeholder="Name" th:field="*{taskName}"><br/>
+                    <span th:if="${#fields.hasErrors('taskName')}" th:errors="*{taskName}" th:errorclass="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label th:text="#{goalsCreate.doByDate}">Do by date</label>
+                    <input class="form-control" type="date" th:field="*{taskFinishDate}"><br/>
+                </div>
+                <div class="form-group">
+                    <label th:text="#{goalsCreate.comment}">Comment</label>
+                    <input class="form-control" type="text" placeholder="Comment" th:field="*{taskComment}"><br/>
+                </div>
+                <div th:if="${message ne null AND message.length >0}"
+                     class="alert alert-success" role="alert"
+                     th:text="${message}">
+                    Success message on goal creation
+                </div>
+                <button class="btn btn-primary" type="submit" th:text="#{goalsCreate.saveButton}">PRESS HERE</button>
+            </form>
+    </main>
+    <footer>
+        <div class="card">
+            <div class="card-header">
+                Important statement as a placeholder for a footer
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>This project was created with immense pain and struggle, will be updated with more pain and struggle and the bugs will be fixed with even more pain and struggle...</p>
+                    <footer class="blockquote-footer">Me just now... <cite title="Source Title">"This project"</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </footer>
 </div>
-<main class="container">
-    <h1 th:text="#{goalsCreate.header}">Goal</h1>
-        <form method="post" th:object="${taskDto}">
-            <div class="form-group">
-                <label th:text="#{goalsCreate.name}">Name</label>
-                <input class="form-control" type="text" placeholder="Name" th:field="*{taskName}"><br/>
-                <span th:if="${#fields.hasErrors('taskName')}" th:errors="*{taskName}" th:errorclass="form-error"></span>
-            </div>
-            <div class="form-group">
-                <label th:text="#{goalsCreate.doByDate}">Do by date</label>
-                <input class="form-control" type="date" th:field="*{taskFinishDate}"><br/>
-            </div>
-            <div class="form-group">
-                <label th:text="#{goalsCreate.comment}">Comment</label>
-                <input class="form-control" type="text" placeholder="Comment" th:field="*{taskComment}"><br/>
-            </div>
-            <div th:if="${message ne null AND message.length >0}"
-                 class="alert alert-success" role="alert"
-                 th:text="${message}">
-                Success message on goal creation
-            </div>
-            <button class="btn btn-primary" type="submit" th:text="#{goalsCreate.saveButton}">PRESS HERE</button>
-        </form>
-</main>
 </body>
 </html>

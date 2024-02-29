@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <title th:text="#{index.title}">Goal Planner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./../js/language.js"></script>
 </head>
 <body>
-<h1 th:text="#{index.header}"></h1>
+    <div class="container-xl">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">Planner</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link" th:href="@{/goals}" th:text="#{goalsList.title}">Goal list</a>
+                            <a class="nav-link" th:href="@{/goals/create}" th:text="#{index.createGoalBtn}">Create a goal</a>
+                            <select id="languageSelector">
+                                <option th:text="#{language.choose}">Choose language</option>
+                                <option value="LT" th:text="'Lietuvių'"></option>
+                                <option value="EN" th:text="'English'"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="container-l">
+            <h1 th:text="#{index.header}"></h1>
+            <p>Welcome to the goal planner! A place where you can set your goals, when you want to accomplish them and split them into task for an easier journey to their completion!</p>
+        </main>
+        <footer>
+            <div class="card">
+                <div class="card-header">
+                    Important statement as a placeholder for a footer
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>This project was created with immense pain and struggle, will be updated with more pain and struggle and the bugs will be fixed with even more pain and struggle...</p>
+                        <footer class="blockquote-footer">Me just now... <cite title="Source Title">"This project"</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
